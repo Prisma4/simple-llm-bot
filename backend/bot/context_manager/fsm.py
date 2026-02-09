@@ -1,6 +1,9 @@
+from typing import List
+
 from aiogram.fsm.context import FSMContext
 
 from bot.context_manager.base import ContextManager
+from llm.models import Message
 
 
 class FSMContextManager(ContextManager):
@@ -8,12 +11,12 @@ class FSMContextManager(ContextManager):
         super().__init__(key)
         self.state = state
 
-    async def save(self, data: str) -> None:
-        data_list = await self.get()
-        data_list.append(data)
-        await self.state.update_data({self.key: data_list})
+    async def save(self, message: Message) -> None:
+        history = await self.get()
+        history.append(message)
+        await self.state.update_data({self.key: history})
 
-    async def get(self) -> list:
+    async def get(self) -> List[Message]:
         data = await self.state.get_data()
         return data.get(self.key, [])
 

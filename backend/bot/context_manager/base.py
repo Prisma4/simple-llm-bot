@@ -1,4 +1,7 @@
 from abc import ABC, abstractmethod
+from typing import List
+
+from llm.models import Message
 
 
 class ContextManager(ABC):
@@ -6,13 +9,13 @@ class ContextManager(ABC):
         self.key = key
 
     @abstractmethod
-    async def save(self, data: str) -> None:
-        pass
+    async def save(self, message: Message) -> None:
+        ...
 
     @abstractmethod
-    async def get(self) -> list:
-        pass
+    async def get(self) -> List[Message]:
+        ...
 
     @abstractmethod
     async def clear(self) -> None:
-        pass
+        ...

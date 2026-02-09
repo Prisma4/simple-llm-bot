@@ -1,70 +1,47 @@
 # Simple LLM Bot
 
-This bot allows users to interact with a large language model (LLM), such as **ChatGPT**. The bot stores user messages, processes them through the LLM, and responds with generated answers.
+A Telegram bot that lets you chat with a powerful language model (like ChatGPT).
 
-## Features
+### Features
 
-- Responds to text messages from users.
-- Stores conversation context (user's message history).
-- Clears conversation context on request.
-- Integrates with ChatGPT API (or other LLMs) for generating responses.
+- Replies to any text message
+- Remembers conversation history
+- Can start a fresh conversation (clear history)
 
-## Setup
+### Quick Start
 
-### 1. Clone the repository
+1. Clone the repository
 
 ```bash
 git clone https://github.com/Prisma4/simple-llm-bot.git
 cd simple-llm-bot
 ```
 
-### 2. Create a `.env` file
-
-Create a `.env` file in the root of the project and add the following environment variables:
+2. Create a file called `.env` in the root folder and fill it:
 
 ```env
-OPENAI_API_KEY=your_openai_api_key
-OPENAI_MODEL=gpt-3.5-turbo  # Or gpt-4 if available
-BOT_TOKEN=your_telegram_bot_api_token  # Telegram bot token
+BOT_TOKEN=your_telegram_bot_token_here
+OPENAI_API_KEY=sk-........................................
+OPENAI_MODEL=gpt-3.5-turbo          # or gpt-4o-mini, gpt-4o, etc.
+SYSTEM_PROMPT=You are a helpful assistant.
 ```
 
-Replace `your_openai_api_key` with your actual OpenAI API key, and both `your_telegram_bot_api_token` placeholders with your Telegram Bot API token.
-
-### 3. Build and start the Docker containers
-
-The project uses **Docker Compose**, and the necessary configurations are already provided. To build and start the services, simply run:
+3. Run with Docker (easiest way)
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
-This will:
-- Build the Docker images.
-- Start the bot and any dependent services.
-- The bot will be up and running, ready to listen for messages.
+That’s it — the bot is now online.
 
-### 4. Verify the bot
+### How to use
 
-Send the `/start` command to your bot on Telegram, and begin interacting. The bot should respond to your messages and process them through the connected LLM.
+- Just send any message to the bot → it will reply
+- To start a new conversation (forget previous messages) → press the “New Request” button or send the configured command
 
-### 5. Clearing the context
+### Required .env variables
 
-To clear the conversation history, send the command defined in your bot's settings (for example, `/clear` or another custom command).
-
-## Environment Variables
-
-Make sure the following environment variables are set in the `.env` file:
-
-| Variable                 | Description                                                 |
-|--------------------------|-------------------------------------------------------------|
-| `OPENAI_API_KEY`         | Your OpenAI API key (required for ChatGPT API integration). |
-| `OPENAI_MODEL`           | The OpenAI model to use, e.g., `gpt-3.5-turbo` or `gpt-4`.  |
-| `BOT_TOKEN`              | Telegram bot token.                                         |
-
-## Notes
-
-- The bot uses **`pydantic`** to handle environment variables, making it easy to manage different configurations.
-- The bot stores the user messages and interacts with the LLM to provide contextual responses.
-- The code is designed for easy expansion, so you can replace the LLM interface to support different models or services if needed.
-
----
+- `BOT_TOKEN`        — Telegram bot token  
+- `OPENAI_API_KEY`  — your OpenAI API key  
+- `OPENAI_MODEL`    — model name (e.g. gpt-3.5-turbo, gpt-4o-mini)  
+- `SYSTEM_PROMPT`   — initial instruction for the model

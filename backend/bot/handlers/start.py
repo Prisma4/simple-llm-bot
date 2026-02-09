@@ -1,3 +1,5 @@
+import logging
+
 from aiogram import types, Router
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
@@ -9,16 +11,22 @@ from bot.texts import Texts
 
 router = Router()
 
+logger = logging.getLogger(__name__)
+
 
 @router.message(Command("start"))
 async def start(message: types.Message, state: FSMContext):
-    await state.set_state(BotStates.main_state)
-    context_manager = FSMContextManager("user_messages", state)
-    await context_manager.clear()
-    await message.answer(
-        text=Texts.START_TEXT,
-        reply_markup=ReplyKeyboards.new_request_keyboard()
-    )
+    try:
+        await state.set_state(BotStates.main_state)
+        ctx = FSMContextManager("user_messages", state)
+        await ctx.clear()
+        await message.answer(
+            text=Texts.START_TEXT,
+            reply_markup=ReplyKeyboards.new_request_keyboard()
+        )
+    except Exception as e:
+        logger.exception(e)
+        await message.answer(Texts.ERROR_TEXT)
 
 
 @router.message(Command("help"))

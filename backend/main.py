@@ -8,9 +8,10 @@ from settings import Settings
 settings = Settings()
 
 logging.basicConfig(level=logging.INFO)
-bot = Bot(token=settings.bot_token)
-dp = Dispatcher()
 
+bot = Bot(token=settings.bot_token)
+
+dp = Dispatcher()
 dp.include_router(start.router)
 dp.include_router(message.router)
 

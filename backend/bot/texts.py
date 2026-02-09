@@ -6,3 +6,4 @@ class Texts:
                  "You can reset message history by using /start command or respectful reply button.")
     NEW_REQUEST = "New request"
     CONTEXT_CLEAR_SUCCESS = "Context cleared successfully."
+    ERROR_TEXT = "Something went wrong. Try again later!"
