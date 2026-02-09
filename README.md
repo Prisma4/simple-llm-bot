@@ -9,15 +9,6 @@ This bot allows users to interact with a large language model (LLM), such as **C
 - Clears conversation context on request.
 - Integrates with ChatGPT API (or other LLMs) for generating responses.
 
-## Requirements
-
-- Docker
-- Docker Compose
-- **Python 3.8+**
-- **`aiogram`** for Telegram bot functionality.
-- **`openai`** for interacting with OpenAI's GPT models.
-- **`pydantic`** for environment variable management.
-
 ## Setup
 
 ### 1. Clone the repository
@@ -34,7 +25,7 @@ Create a `.env` file in the root of the project and add the following environmen
 ```env
 OPENAI_API_KEY=your_openai_api_key
 OPENAI_MODEL=gpt-3.5-turbo  # Or gpt-4 if available
-TELEGRAM_API_TOKEN=your_telegram_bot_api_token
+OPENAI_API_URL=open_api_url
 BOT_TOKEN=your_telegram_bot_api_token  # Telegram bot token
 ```
 
@@ -65,12 +56,12 @@ To clear the conversation history, send the command defined in your bot's settin
 
 Make sure the following environment variables are set in the `.env` file:
 
-| Variable                  | Description                                                   |
-|---------------------------|---------------------------------------------------------------|
-| `OPENAI_API_KEY`           | Your OpenAI API key (required for ChatGPT API integration).   |
-| `OPENAI_MODEL`             | The OpenAI model to use, e.g., `gpt-3.5-turbo` or `gpt-4`.    |
-| `TELEGRAM_API_TOKEN`       | Your Telegram Bot API token (required for bot interaction).  |
-| `BOT_TOKEN`                | Another alias for your Telegram Bot API token (optional).    |
+| Variable                 | Description                                                 |
+|--------------------------|-------------------------------------------------------------|
+| `OPENAI_API_KEY`         | Your OpenAI API key (required for ChatGPT API integration). |
+| `OPENAI_MODEL`           | The OpenAI model to use, e.g., `gpt-3.5-turbo` or `gpt-4`.  |
+| `OPENAI_API_URL`         | OpenAI API url. ( Optional ).                               |
+| `BOT_TOKEN`              | Telegram bot token.                                         |
 
 ## Notes
 
