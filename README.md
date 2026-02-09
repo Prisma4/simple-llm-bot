@@ -25,7 +25,6 @@ Create a `.env` file in the root of the project and add the following environmen
 ```env
 OPENAI_API_KEY=your_openai_api_key
 OPENAI_MODEL=gpt-3.5-turbo  # Or gpt-4 if available
-OPENAI_API_URL=open_api_url
 BOT_TOKEN=your_telegram_bot_api_token  # Telegram bot token
 ```
 
@@ -60,7 +59,6 @@ Make sure the following environment variables are set in the `.env` file:
 |--------------------------|-------------------------------------------------------------|
 | `OPENAI_API_KEY`         | Your OpenAI API key (required for ChatGPT API integration). |
 | `OPENAI_MODEL`           | The OpenAI model to use, e.g., `gpt-3.5-turbo` or `gpt-4`.  |
-| `OPENAI_API_URL`         | OpenAI API url. ( Optional ).                               |
 | `BOT_TOKEN`              | Telegram bot token.                                         |
 
 ## Notes
