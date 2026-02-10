@@ -24,6 +24,7 @@ BOT_TOKEN=your_telegram_bot_token_here
 OPENAI_API_KEY=sk-........................................
 OPENAI_MODEL=gpt-3.5-turbo          # or gpt-4o-mini, gpt-4o, etc.
 SYSTEM_PROMPT=You are a helpful assistant.
+REDIS_URL=your_redis_url e.g. redis://redis:6379/0
 ```
 
 3. Run with Docker (easiest way)
@@ -32,7 +33,7 @@ SYSTEM_PROMPT=You are a helpful assistant.
 docker compose up --build
 ```
 
-That’s it — the bot is now online.
+That’s it - the bot is now online.
 
 ### How to use
 
@@ -41,7 +42,8 @@ That’s it — the bot is now online.
 
 ### Required .env variables
 
-- `BOT_TOKEN`        — Telegram bot token  
-- `OPENAI_API_KEY`  — your OpenAI API key  
-- `OPENAI_MODEL`    — model name (e.g. gpt-3.5-turbo, gpt-4o-mini)  
-- `SYSTEM_PROMPT`   — initial instruction for the model
+- `BOT_TOKEN`        - Telegram bot token  
+- `OPENAI_API_KEY`  - your OpenAI API key  
+- `OPENAI_MODEL`    - model name (e.g. gpt-3.5-turbo, gpt-4o-mini)  
+- `SYSTEM_PROMPT`   - initial instruction for the model
+- `REDIS_URL`   - A redis url used to save message context
