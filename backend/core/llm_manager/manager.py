@@ -36,7 +36,7 @@ class LLMManager:
             role=MessageRole.ASSISTANT,
             content=response
         )
-        await self.context_manager.save_message(new_response)
+        await self.context_manager.save_message(str(user_id), new_response)
         return response
 
     async def clear_context(

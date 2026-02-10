@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 @router.message(Command("start"))
 async def start(message: types.Message):
     try:
-        await llm_manager.clear_context(str(message.from_user.id))
+        await llm_manager.clear_context(message.from_user.id)
 
         await message.answer(
             text=Texts.START_TEXT,
