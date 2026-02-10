@@ -24,7 +24,7 @@ class LLMManager:
             content=content,
         )
 
-    async def send_message_to_llm(
+    async def send_message_with_context(
             self,
             user_id: int,
             message: str

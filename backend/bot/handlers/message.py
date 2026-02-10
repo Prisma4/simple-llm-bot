@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 @router.message(F.text == Texts.NEW_REQUEST)
-async def cmd_new_request(message: types.Message) -> None:
+async def handle_new_request(message: types.Message) -> None:
     try:
         await llm_manager.clear_context(message.from_user.id)
         await message.answer(Texts.CONTEXT_CLEAR_SUCCESS)
@@ -22,7 +22,7 @@ async def cmd_new_request(message: types.Message) -> None:
 @router.message()
 async def handle_message(message: types.Message) -> None:
     try:
-        response = await llm_manager.send_message_to_llm(message.from_user.id, message.text)
+        response = await llm_manager.send_message_with_context(message.from_user.id, message.text)
         await message.answer(response)
     except Exception as e:
         logger.exception(e)

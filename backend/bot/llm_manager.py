@@ -1,4 +1,4 @@
-from core.context_manager.redis_context_manager import RedisMessageContextManager
+from core.context_manager.redis_context import RedisMessageContextManager
 from core.llm.llm_interface.open_ai import OpenAILLMInterface
 from core.llm_manager.manager import LLMManager
 from settings import Settings
