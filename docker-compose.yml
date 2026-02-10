@@ -5,4 +5,11 @@ services:
       BOT_TOKEN: $BOT_TOKEN
       OPENAI_API_KEY: $OPENAI_API_KEY
       OPENAI_MODEL: $OPENAI_MODEL
-      SYSTEM_PROMPT: SYSTEM_PROMPT
+      SYSTEM_PROMPT: $SYSTEM_PROMPT
+      REDIS_URL: $REDIS_URL
+
+  redis:
+    restart: always
+    image: eqalpha/keydb
+    ports:
+      - "6379:6379"

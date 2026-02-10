@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from llm.models import Message
+from core.llm.models import Message
 
 
 class AbstractLLMInterface(ABC):

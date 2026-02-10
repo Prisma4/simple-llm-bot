@@ -3,25 +3,30 @@ from typing import List
 from openai import AsyncOpenAI, OpenAIError
 from openai.types.chat import ChatCompletionMessageParam
 
-from llm.llm_interface.base import AbstractLLMInterface
-from llm.models import Message
-from settings import Settings
+from core.llm.llm_interface.base import AbstractLLMInterface
+from core.llm.models import Message
 
 
 class OpenAILLMInterface(AbstractLLMInterface):
-    def __init__(self, settings: Settings):
-        self.settings = settings
-        self.client = AsyncOpenAI(api_key=self.settings.openai_api_key)
+    def __init__(
+            self,
+            api_key: str,
+            model: str,
+            system_prompt: str = ""
+    ):
+        self.client = AsyncOpenAI(api_key=api_key)
+        self.model = model
+        self.system_prompt = system_prompt
 
     async def send_message(self, context: List[Message]) -> str:
         messages: List[ChatCompletionMessageParam] = [
-            {"role": "system", "content": self.settings.system_prompt},
+            {"role": "system", "content": self.system_prompt},
             *[{"role": m.role.value, "content": m.content} for m in context],
         ]
 
         try:
             response = await self.client.chat.completions.create(
-                model=self.settings.openai_model,
+                model=self.model,
                 messages=messages,
             )
             content = response.choices[0].message.content or ""
