@@ -1,6 +1,10 @@
 # Simple LLM Bot
 
 A Telegram bot that lets you chat with a powerful language model (like ChatGPT).
+It consists of two parts: the bot itself and the core for interacting with LLM.
+
+The bot is written in the Aiogram framework and uses the core to access LLM.
+The core is implementation-independent and can be initialized in any environment. It uses abstractions and can be extended if needed. ( e.g. add new LLMs )
 
 ### Features
 
@@ -24,7 +28,7 @@ BOT_TOKEN=your_telegram_bot_token_here
 OPENAI_API_KEY=sk-........................................
 OPENAI_MODEL=gpt-3.5-turbo          # or gpt-4o-mini, gpt-4o, etc.
 SYSTEM_PROMPT=You are a helpful assistant.
-REDIS_URL=your_redis_url e.g. redis://redis:6379/0
+REDIS_URL=your_redis_url            # redis://redis:6379/0
 ```
 
 3. Run with Docker (easiest way)
@@ -44,6 +48,9 @@ That’s it - the bot is now online.
 
 - `BOT_TOKEN`        - Telegram bot token  
 - `OPENAI_API_KEY`  - your OpenAI API key  
-- `OPENAI_MODEL`    - model name (e.g. gpt-3.5-turbo, gpt-4o-mini)  
-- `SYSTEM_PROMPT`   - initial instruction for the model
+- `OPENAI_MODEL`    - model name (e.g. gpt-3.5-turbo, gpt-4o-mini) 
 - `REDIS_URL`   - A redis url used to save message context
+
+### Optional .env variables
+
+- `SYSTEM_PROMPT`   - initial instruction for the model

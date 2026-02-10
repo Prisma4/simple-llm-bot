@@ -6,6 +6,10 @@ from core.llm.models import Message, MessageRole
 
 
 class LLMManager:
+    """
+    Class for an external interaction with LLM service.
+    Can be initiated in any environment, e.g. bots, backend e.t.c.
+    """
     def __init__(
             self,
             context_manager: AbstractMessageContextManager,

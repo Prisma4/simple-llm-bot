@@ -8,6 +8,9 @@ from core.llm.models import Message
 
 
 class OpenAILLMInterface(AbstractLLMInterface):
+    """
+    A LLMInterface for OpenAI models.
+    """
     def __init__(
             self,
             api_key: str,

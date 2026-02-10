@@ -7,6 +7,9 @@ from core.llm.models import Message
 
 
 class RedisMessageContextManager(AbstractMessageContextManager):
+    """
+    A message context manager for Redis | KeyDB.
+    """
     _redis = None
 
     def __init__(

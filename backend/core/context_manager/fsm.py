@@ -7,6 +7,9 @@ from core.llm.models import Message
 
 
 class FSMMessageContextManager(AbstractMessageContextManager):
+    """
+    A message context manager for Aiogram State.
+    """
     def __init__(self, state: FSMContext) -> None:
         self.state = state
 

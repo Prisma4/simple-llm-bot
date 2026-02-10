@@ -5,6 +5,10 @@ from core.llm.models import Message
 
 
 class AbstractMessageContextManager(ABC):
+    """
+    Abstract class for message context managers.
+    Message context manager is an entity which saves user's message history, provides and clears it.
+    """
     @abstractmethod
     async def save_message(self, key: str, message: Message) -> None:
         ...
