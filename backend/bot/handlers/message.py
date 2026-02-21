@@ -27,9 +27,11 @@ async def handle_message(message: types.Message) -> None:
     try:
         images_b64 = await message_photo_to_base64(message)
 
+        text = message.text or message.caption
+
         response = await llm_manager.send_request_with_context(
             message.from_user.id,
-            message.text,
+            text,
             [images_b64]
         )
 
