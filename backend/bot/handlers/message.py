@@ -2,10 +2,11 @@ import logging
 
 from aiogram import types, Router, F
 from aiogram.enums import ParseMode
+from aiogram.utils.formatting import markdown_decoration
 
 from bot.llm_manager import llm_manager
 from bot.texts import Texts
-from bot.utils import split_message, escape_markdown
+from bot.utils import split_message
 from settings import MAX_BOT_MESSAGE_LENGTH
 
 router = Router()
@@ -30,7 +31,7 @@ async def handle_message(message: types.Message) -> None:
 
         messages = split_message(response, MAX_BOT_MESSAGE_LENGTH)
         for m in messages:
-            await message.answer(escape_markdown(m), parse_mode=ParseMode.MARKDOWN_V2)
+            await message.answer(markdown_decoration(m), parse_mode=ParseMode.MARKDOWN_V2)
             logger.info(f'Message with len {len(m)} sent to {message.from_user.id}')
 
     except Exception as e:

@@ -21,9 +21,3 @@ def parse_allowed_users_ids(id_str: str, delimiter: str = ",") -> List[int] | No
 
     if id_list:
         return id_list
-
-
-def escape_markdown(text: str) -> str:
-    text = re.sub(r'([\\_*`\[\]()~>#+\-.!|=])', r'\\\1', text)
-    text = re.sub(r'(^|\s)(#)(\S)', r'\1\\#\3', text)
-    return text
