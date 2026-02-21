@@ -1,8 +1,12 @@
 import base64
+import logging
 from io import BytesIO
 from typing import List, Sequence
 
 from aiogram.types import Message, PhotoSize
+
+
+logger = logging.getLogger(__name__)
 
 
 def split_message(text: str, max_length: int = 4096) -> List[str]:
@@ -41,6 +45,7 @@ async def photos_to_base64(
 
         buf = BytesIO()
         await message.bot.download_file(tg_file.file_path, destination=buf)
+        logger.info(f"BOT: Downloaded photo with size: {p.file_size}")
         data = buf.getvalue()
 
         result.append(base64.b64encode(data).decode("utf-8"))
@@ -52,4 +57,4 @@ async def message_photo_to_base64(message: Message) -> str | None:
     photos = message.photo or []
     if not photos:
         return None
-    return (await photos_to_base64(message, photos=[photos[-1]]))[0]
+    return (await photos_to_base64(message, photos=[photos[0]]))[0]
