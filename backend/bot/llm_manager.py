@@ -10,6 +10,6 @@ llm_manager = LLMManager(
     llm_interface=OpenAILLMInterface(
         settings.openai_api_key,
         settings.openai_model,
-        "Generate MarkdownV2 with escaped _ * [ ] ( ) ~ ` > # + - = | { } . ! in plain text" + settings.system_prompt,
+        "Use HTML text format" + settings.system_prompt,
     )
 )

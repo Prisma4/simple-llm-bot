@@ -30,7 +30,7 @@ async def handle_message(message: types.Message) -> None:
 
         messages = split_message(response, MAX_BOT_MESSAGE_LENGTH)
         for m in messages:
-            await message.answer(m, parse_mode=ParseMode.MARKDOWN_V2)
+            await message.answer(m, parse_mode=ParseMode.HTML)
             logger.info(f'Message with len {len(m)} sent to {message.from_user.id}')
 
     except Exception as e:
