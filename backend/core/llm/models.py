@@ -1,5 +1,5 @@
 import enum
-from typing import Dict, List
+from typing import Dict, List, Union
 
 from pydantic import BaseModel
 
@@ -11,4 +11,4 @@ class MessageRole(enum.Enum):
 
 class Message(BaseModel):
     role: MessageRole
-    content: List[Dict[str, str]]
+    content: List[Dict[str, Union[str, dict]]]
