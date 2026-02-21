@@ -26,7 +26,7 @@ async def handle_new_request(message: types.Message) -> None:
 @router.message()
 async def handle_message(message: types.Message) -> None:
     try:
-        images_b64 = message_photo_to_base64(message)
+        images_b64 = await message_photo_to_base64(message)
 
         response = await llm_manager.send_request_with_context(
             message.from_user.id,
