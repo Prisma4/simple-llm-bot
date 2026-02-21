@@ -29,6 +29,7 @@ OPENAI_API_KEY=sk-........................................
 OPENAI_MODEL=gpt-3.5-turbo          # or gpt-4o-mini, gpt-4o, etc.
 SYSTEM_PROMPT=You are a helpful assistant.
 REDIS_URL=your_redis_url            # redis://redis:6379/0
+ALLOWED_USERS_IDS=int,int,int..  # one string with ids, divided by period.
 ```
 
 3. Run with Docker (easiest way)
@@ -54,3 +55,4 @@ That’s it - the bot is now online.
 ### Optional .env variables
 
 - `SYSTEM_PROMPT`   - initial instruction for the model
+- `ALLOWED_USERS_IDS` - bot whitelist
