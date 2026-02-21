@@ -32,7 +32,7 @@ class LLMManager:
         for b64 in (images_b64 or []):
             parts.append({
                 "type": "image_url",
-                "image_url": f"data:{image_mime};base64,{b64}",
+                "image_url": {"url": f"data:{image_mime};base64,{b64}"},
             })
 
         return Message(role=role, content=parts)
