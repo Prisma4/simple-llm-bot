@@ -10,6 +10,6 @@ llm_manager = LLMManager(
     llm_interface=OpenAILLMInterface(
         settings.openai_api_key,
         settings.openai_model,
-        "Use HTML text format" + settings.system_prompt,
+        settings.system_prompt,
     )
 )
