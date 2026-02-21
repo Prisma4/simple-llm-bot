@@ -28,11 +28,12 @@ async def handle_message(message: types.Message) -> None:
         images_b64 = await message_photo_to_base64(message)
 
         text = message.text or message.caption
+        image = [images_b64] if images_b64 else None
 
         response = await llm_manager.send_request_with_context(
             message.from_user.id,
             text,
-            [images_b64]
+            image
         )
 
         messages = split_message(response, MAX_BOT_MESSAGE_LENGTH)
