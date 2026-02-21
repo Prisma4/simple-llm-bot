@@ -1,4 +1,5 @@
 import enum
+from typing import Dict, List
 
 from pydantic import BaseModel
 
@@ -10,4 +11,4 @@ class MessageRole(enum.Enum):
 
 class Message(BaseModel):
     role: MessageRole
-    content: str
+    content: List[Dict[str, str]]
