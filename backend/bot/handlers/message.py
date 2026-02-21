@@ -1,7 +1,6 @@
 import logging
 
 from aiogram import types, Router, F
-from aiogram.enums import ParseMode
 
 from bot.llm_manager import llm_manager
 from bot.texts import Texts
@@ -27,6 +26,7 @@ async def handle_new_request(message: types.Message) -> None:
 async def handle_message(message: types.Message) -> None:
     try:
         images_b64 = await message_photo_to_base64(message)
+        logger.info(f"Found {len(images_b64)} images in message")
 
         response = await llm_manager.send_request_with_context(
             message.from_user.id,

@@ -34,7 +34,6 @@ async def photos_to_base64(
     message: Message,
     photos: Sequence[PhotoSize] | None = None,
 ) -> list[str]:
-    photos = photos or (message.photo or [])
     if not photos:
         return []
 
