@@ -57,4 +57,4 @@ async def message_photo_to_base64(message: Message) -> str | None:
     photos = message.photo or []
     if not photos:
         return None
-    return (await photos_to_base64(message, photos=[photos[0]]))[0]
+    return (await photos_to_base64(message, photos=[photos[-1]]))[0]
