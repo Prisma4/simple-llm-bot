@@ -1,7 +1,6 @@
 import logging
 
 from aiogram import types, Router, F
-from aiogram.enums import ParseMode
 
 from bot.llm_manager import llm_manager
 from bot.texts import Texts
@@ -28,10 +27,13 @@ async def handle_message(message: types.Message) -> None:
     try:
         images_b64 = await message_photo_to_base64(message)
 
+        text = message.text or message.caption
+        image = [images_b64] if images_b64 else None
+
         response = await llm_manager.send_request_with_context(
             message.from_user.id,
-            message.text,
-            images_b64
+            text,
+            image
         )
 
         messages = split_message(response, MAX_BOT_MESSAGE_LENGTH)
