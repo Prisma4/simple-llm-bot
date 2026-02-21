@@ -1,3 +1,4 @@
+import re
 from typing import List
 
 
@@ -20,3 +21,7 @@ def parse_allowed_users_ids(id_str: str, delimiter: str = ",") -> List[int] | No
 
     if id_list:
         return id_list
+
+
+def escape_markdown(text: str) -> str:
+    return re.sub(r'([\\_*`\[\]()~>#+\-.!|])', r'\\\1', text)
