@@ -5,7 +5,7 @@ from aiogram.enums import ParseMode
 
 from bot.llm_manager import llm_manager
 from bot.texts import Texts
-from bot.utils import split_message
+from bot.utils import split_message, message_photo_to_base64
 from settings import MAX_BOT_MESSAGE_LENGTH
 
 router = Router()
@@ -26,7 +26,13 @@ async def handle_new_request(message: types.Message) -> None:
 @router.message()
 async def handle_message(message: types.Message) -> None:
     try:
-        response = await llm_manager.send_message_with_context(message.from_user.id, message.text)
+        images_b64 = message_photo_to_base64(message)
+
+        response = await llm_manager.send_request_with_context(
+            message.from_user.id,
+            message.text,
+            images_b64
+        )
 
         messages = split_message(response, MAX_BOT_MESSAGE_LENGTH)
         for m in messages:
